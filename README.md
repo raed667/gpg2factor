@@ -6,11 +6,10 @@ master-dev of the php plugin with gpg 2 factor authentification
 <h1>Fonctionnement</h1>
 
 1- Logged-in user adds his public-key
---
+
 2- Next log-in system generates a randon string `pin`
 3- System encrypts the string `pin` => `Enc-pin`
 4- system displays the encrypted `pin` to the user 
-----
 
 5- User decrypts the message `Enc-pin`
 
