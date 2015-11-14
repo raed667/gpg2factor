@@ -5,6 +5,12 @@ gpg_auth_master_dev
 
 GPG based 2 factor authentification
 
+### Demo 
+[Demo link](http://raed.it/gpg2fa/)
+
+The 2 demo files are `index.php` and `login.php`.
+I don't store anything that is passed to the demo.
+
 ### Why is it useful?
 When you need 2FA for your website but:
 * You don't want your users, *for privacy*,  to put phone-numbers (or even emails).
