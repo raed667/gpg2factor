@@ -1,15 +1,48 @@
 <?php
 
-set_include_path(
-		realpath("./libs") .
-		PATH_SEPARATOR . get_include_path()
-);
+require './GPG2FA.php';
 
-require_once 'GPG.php';
+/*
+ * Init here
+ */
+$gpg2fa = new GPG2FA();
+
+/*
+ * This clear text token is kept in your session for a limited time 
+ * You'll need this token to compare with the user's input
+ */
+$clear_text_token = $gpg2fa->getToken();
+
+/*
+ * Set the public key you'll be getting from your user. This key is going
+ *  to be probably stored in a User table.
+ * 
+ * The function getTestKey() is just returning a static key I generated for this demo.
+ * In order to test this yourself go the to function and replace the key with your own. 
+ */
+$gpg2fa->setPublicKey(getTestKey());
+
+/*
+ * This encrypted token is what is displayed to the user when they login.
+ * make sure that when you display it, it is copy-pastable.
+ * Don't forget to surround it with <pre> tags.
+ * 
+ */
+$encyrpted_token = $gpg2fa->getEncryptedToken();
 
 
-	function getTestKey(){
-		return "-----BEGIN PGP PUBLIC KEY BLOCK-----
+echo "Token : " . $clear_text_token . " <br>-------------------<br>";
+echo "Encrypted Token :<br> <pre>" . $encyrpted_token . "</pre>";
+
+
+/*
+ * Just a static Test key 
+ * Replace this function with the key you'll be getting from your user
+ * Perform necessary checks on key before setting it
+ */
+
+function getTestKey() {
+    return "-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1
 
 mQENBFZFT6cBCADiW9BrrCwbh1dODXafu8EKysUCIfS1vNOSDPq4c1yy0rNsnsJH
@@ -39,19 +72,4 @@ RoMQu3p3o3TYWZ6Y9MzS3tkKCC7bdTg66yMXrnIeRtdCsJmHvZCPf67pcP7XGvZv
 k7fCyFxgJDBh1bmlNimXk3Ed+M433DDaOg2VXCu09mSfsrY7jg==
 =JwDk
 -----END PGP PUBLIC KEY BLOCK-----";
-	}
-
-		
-		$public_key_ascii = getTestKey();
-		$plain_text_string  = "Hello World!";
-
-		$gpg = new GPG();
-		$pub_key = new GPG_Public_Key($public_key_ascii);
-		$encrypted = $gpg->encrypt($pub_key,$plain_text_string);
-
-
-		echo $encrypted;
-
-
-
-?>
+}
