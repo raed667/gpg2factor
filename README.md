@@ -5,6 +5,11 @@ gpg_auth_master_dev
 
 GPG based 2 factor authentification
 
+### Why is it useful?
+When you need 2FA for your website but:
+* You don't want your users, *for privacy*,  to put phone-numbers (or even emails).
+* You're too poor to buy such a phone based service.
+
 #### How it works?
 
 1- Logged-in user adds their public-key.
