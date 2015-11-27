@@ -8,7 +8,7 @@ GPG based 2 factor authentification
 ### Demo 
 [Demo link](http://raed.it/gpg2fa/)
 
-The 2 demo files are `index.php` and `login.php`.
+The 2 demo files are `index.html` and `login.php`.
 I don't store anything that is passed to the demo.
 
 ### Why is it useful?
@@ -28,11 +28,11 @@ When you need 2FA for your website but:
 
 6- User submists the decrypted token and if it maches the original token they log-in. 
 
-#### Demo
-A working demo should be online soon, you can see the code in action in `demo.php`
+#### TODO
+Get this working with WordPress. (Plugin)
 
 ### Version
-0.2.0
+0.2.1
 
 ### Tech
 
