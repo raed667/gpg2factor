@@ -65,6 +65,9 @@ if ((isset($_POST['publicKey']) && isset($_POST['username']))) {
         if ($hastoken) {
             echo "<pre>" . $_SESSION['encyrpted_token'] . "</pre>";
 
+            echo '<br> Just decrypt the previous message with the key you have submitted, then copy-paste the output here:';
+
+
             echo '<form action="login.php" method="post">'
             . '<input type="text" placeholder="token" required="required" name="token"/>'
             . '<button type="submit">Submit</button>'

@@ -12,7 +12,6 @@ set_include_path(
         PATH_SEPARATOR . get_include_path()
 );
 
-require_once 'CryptLib/bootstrap.php';
 require_once 'GPG.php';
 
 class GPG2FA {
@@ -31,26 +30,19 @@ class GPG2FA {
             return (float) $sec + ((float) $usec * 100000);
         }
 
-        $factory = new \CryptLib\Random\Factory;
-        $generator = $factory->getLowStrengthGenerator();
-        $number = $generator->generate(8);
-
         srand(make_seed());
         $randval = rand();
 
-        switch ($randval % 3) {
+        srand(make_seed());
+        $number = rand();
+
+        switch ($randval % 2) {
             case 0:
                 $token = bin2hex($number);
                 break;
-            case 1:
+             default:
                 $token = base64_encode($number);
                 break;
-            default: {
-                    $characters = '0123456789abcdefghijklmnopqrstuvwxyz' .
-                            'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&;<>?';
-                    $token = $generator->generateString(16, $characters);
-                    break;
-                }
         }
         return $token;
     }
@@ -67,7 +59,7 @@ class GPG2FA {
         $gpg = new GPG();
         if ($this->publicKey != NULL) {
             $pub_key = new GPG_Public_Key($this->publicKey);
-            return $gpg->encrypt($pub_key, $this->token);
+            return $gpg->encrypt($pub_key, $this->token,"");
         } else {
             return NULL;
         }
