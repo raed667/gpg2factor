@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>GPG2FA - Put Public Key -DEMO </title>
+    </head>
+    <body>
+       <h1>GPG 2FA - DEMO</h1>
+        <br>
+        <b>Privacy conscious Two-factor authentication.</b>
+        <br>
+        Check the <a href="https://github.com/RaedsLab/gpgfactor_master_dev">Github project</a>.
+        <br>
+        <pre>
+        Put any username in the form, and copy paste your public key.
+        <em>For this demo a password is not needed.</em>
+        I don't store any kind of data form this demo.
+        LICENSE : GPL V3
+        </pre>
+        <form action="login.php" method="post">
+            <label for="username">Username</label>
+            <input required="required" type="text" name="username"/>
+            <br>
+            <label for="publicKey">Public key</label>
+            <textarea required  name="publicKey"></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68678399-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+</html>
